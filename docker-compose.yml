@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  rag-service:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data  # Mount local EHR data
+    environment:
+      - MODEL_NAME=phi-3-mini  # or TinyLlama
+    deploy:
+      resources:
+        limits:
+          memory: 8G  # Adjust based on your RAM
